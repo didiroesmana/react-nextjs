@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import Login from '../components/Login/Login';
 
-class Index extends Component {
+class LoginPage extends Component {
   render() {
     return (
       <div>
@@ -19,4 +19,4 @@ class Index extends Component {
   }
 }
 
-export default Index;
+export default LoginPage;

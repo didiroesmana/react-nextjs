@@ -40,6 +40,9 @@ app.prepare()
         // only creates tables/collections if they are not there - you still need
         // to handle database schema changes yourself.
         db.sync(function (err) {
+          // db.models.user.create({username: "test",email:"test@test.com",password:"test"}, function(err){
+
+          // });
           if (err) {
             return reject(err)
           }
@@ -69,6 +72,20 @@ app.prepare()
         res.send({status:status});
       });
 
+    });
+
+    server.post('/register', (req, res) => {
+      let User = db.models.user;
+      let status = "error";
+
+      console.log(req.body);
+      User.create({username: req.body.username, email: req.body.email, password: req.body.password}, function(err) {
+        if (!err) {
+          status = "success";
+        }
+
+        res.send({status:status});
+      });
     });
 
     server.get('*', (req, res) => handle(req, res));

@@ -16,7 +16,7 @@ class Login extends Component {
    };
 
   onSubmit(e){
-   fetch('/users', {
+   fetch('/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ class Login extends Component {
    })
    .then(function(json){
       if(json.status == 'success'){
-        alert('success boss');
+        Router.push('/');
       }
       else{
         alert('fail boss');

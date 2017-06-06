@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Router from 'next/router';
 
 class Register extends Component {
 
@@ -27,15 +28,15 @@ class Register extends Component {
     if (this.state.reg_paswd != this.state.reg_paswd_rep) {
       alert('password did not match!');
     } else {
-      fetch('/users', {
+      fetch('/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: this.state.username,
+          username: this.state.reg_usern,
           email: this.state.req_email,
-          password: this.state.password,
+          password: this.state.reg_paswd,
         }),
       })
        .then((response) => {
@@ -46,7 +47,7 @@ class Register extends Component {
        })
        .then((json) => {
          if (json.status == 'success') {
-           alert('success boss');
+           Router.push('/');
          } else {
            alert('fail boss');
          }
